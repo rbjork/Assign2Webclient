@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Simple</title>
+<script src="js/piechartcode.js"></script>
+<script language="javascript">
+	var data = [{name:"john", likes:1},{name:"jill", likes:3},{name:"pete", likes:2},{name:"phil", likes:3}];
+	function plot(){
+		var likes = [];
+		for(var itm in data){
+			likes = [likes,itm.likes];
+		}
+		var g = likes;
+	}
+</script>
+</head>
+
+<body onLoad="plot()">
+Simple
+</body>
+</html>

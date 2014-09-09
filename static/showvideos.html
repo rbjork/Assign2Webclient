@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Show Videos</title>
+<script  src="js/angular.min.js"></script>
+<script  src="js/d3.min.js"></script>
+<script src="js/barchartcode.js" ></script>
+<script src="js/showvideoservice.js" ></script>
+<script src="js/piechartcode.js" ></script>
+</head>
+<body ng-app="httpmodule">
+<style>
+
+	.bar {
+	  fill: steelblue;
+	}
+	
+	.axis text {
+	  font: 10px sans-serif;
+	}
+	
+	.axis path,
+	.axis line {
+	  fill: none;
+	  stroke: #000;
+	  shape-rendering: crispEdges;
+	}
+	
+	.x.axis path {
+	  display: none;
+	}
+</style>
+<link rel="stylesheet" type="text/css" href="css/styles.css" />
+<h1>Likes of Videos</h1>
+<table width="80%" height="300px" border=1 ><tr><td><div id="barchart"></div><svg class="chart"></svg></td><td><div id="pie"></div></td></tr></table>
+<script src="js/barchartcode.js"></script>
+<div ng-controller="VideoController">
+    <table  width="80%">
+    	<thead><tr><th>ID</th><th>Title</th><th>Duration</th><th>Likes</th></tr></thead>
+    	<tr ng-repeat="item in data">
+    		<td>{{item.id}}</td><td>{{item.name}}</td><td>{{item.duration}}</td><td>{{item.likes}}</td>
+    	</tr>
+    </table>
+    <br></br>
+    
+    <select ng-model="method">
+      <option>GET</option>
+      <option>POST</option>
+      <option>JSONP</option>
+    </select><br>
+	 <button id="generatevideosbtn" ng-click="generatevideolist()">Generate Video List</button><br>
+    <input type="text" ng-model="url" size="80" />{{updateModel("GET",url)}}<br>
+    <button id="getvideosbtn" ng-click="getvideolist()">Get Video List </button><br>
+    <pre>http status code: {{status}}</pre>
+    <pre>http response data: {{data}}</pre>
+</div>
+</body>
+</html>
